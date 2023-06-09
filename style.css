@@ -2,27 +2,55 @@ body{
     background: hsl(27, 66%, 92%);
     padding: 15px;
     font-family: sans-serif;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    align-items:center;
 }
 .canvas {
     padding: 20px;
-    width: 500px;
-    height: 300px;
+    width: 650px;
+    height: 400px;
 }
 .container {
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-left: 35%;
     margin-top: 10%;
-    background: hsl(33, 100%, 98%);
-    box-shadow: 3px 3px 10px rgba(0,0,0,0.1);
+    background: #FFEBEB;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.459);
     border-radius: 10px;
-    width: 35rem;
-    height: 30rem;
+    width: 50rem;
+    height: 40rem;
 }
-.container p {
-    color: #000;
-    font-size: xx-large;
-    margin-right: 70%;
+.containerInputs {
+    font-size: x-large;
     
+    
+}
+
+.inputs {
+    border: none;
+    background: #1103037a;
+    border-radius: 05px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: medium;
+    color: #DDE6ED;
+    
+}
+.btn {
+    padding: 10px;
+    border: none;
+    border-radius: 05px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.459);
+    font-size: medium;
+    color: #DDE6ED;
+    background: #1103037a;
+    
+   
+}
+.btn:hover {
+    background: #DDE6ED;
+    color: #1103037a;
 }

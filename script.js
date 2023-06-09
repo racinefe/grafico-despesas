@@ -1,64 +1,59 @@
-fetch('data.json')
-  .then(response => response.json())
-  .then(data => {
+fetch("data.json")
+  .then((response) => response.json())
+  .then((data) => {
+    const dias = data.map((item) => item.day);
+    
+    // Carregar dados do Armazenamento Local ou usar valores padrão
+    let valores = JSON.parse(localStorage.getItem('valores')) || [
+      { "day": "Segunda-feira", "amount": 0 },
+      { "day": "Terça-feira", "amount": 0 },
+      { "day": "Quarta-feira", "amount": 0 },
+      { "day": "Quinta-feira", "amount": 0 },
+      { "day": "Sexta-feira", "amount": 0 },
+      { "day": "Sábado", "amount": 0 },
+      { "day": "Domingo", "amount": 0 }
+    ];
 
-    const dias = data.map(item => item.day);
-    const valores = data.map(item => item.amount);
+    const ctx = document.getElementById("grafico");
 
-    const ctx = document.getElementById('grafico');
-
-    new Chart(ctx, {
-      type: 'bar',
+    const chart = new Chart(ctx, {
+      type: "bar",
       data: {
         labels: dias,
-        
-        datasets: [{
-          label: 'My balance',
-          backgroundColor: 'hsl(10, 79%, 65%, 0.5)',
-          data: valores,
-          borderWidth: 1
-        }]
-      },
-      options: {
-        plugins: {
-          tooltip: {
-            callbacks: {
-              label: function(context) {
-                return context.dataset.label + ': R$' + context.parsed.y.toFixed(2);
-              }
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callbacks: function(value, index, values) {
-                return 'R$' + value.toFixed(2);
-              }
-            }
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
+
+        datasets: [
+          {
+            label: "My balance",
+            backgroundColor: "hsl(10, 79%, 65%, 0.5)",
+            hoverBackgroundColor: "hsl(209, 68%, 66%, 0.3)",
+            data: valores.map(item => item.amount),
+            borderWidth: 1,
           },
-          afterDraw: function(chart) {
-            const total = valores.reduce((acc, curr) => acc + curr,0);
-            const totalElement = document.getElementById('totalDespesas');
-            totalElement.innerText = 'Total: R$' + total.toFixed(2);
-            
-          }
-        }
+        ],
+      },
+    });
+    const atualizarBtn = document.getElementById('atualizar');
+    atualizarBtn.addEventListener('click', () => {
+      const valorInput = document.getElementById('valor').value;
+      const diaSelect = document.getElementById('dia').value;
+
+      // Encontrar o índice do dia da semana selecionado
+      const diaIndex = valores.findIndex(item => item.day === diaSelect);
+
+      if(diaIndex !== -1) {
+        //Atualizar o valor no array de valores
+        valores[diaIndex].amount = parseFloat(valorInput);
+
+        // Salvar os dados no Armazenamento Local
+        localStorage.setItem('valores', JSON.stringify(valores));
+
+        //Atualizza o gráfico
+        chart.data.datasets[0].data = valores.map(item => item.amount);
+        chart.update();
+        
       }
     });
   })
-.catch(error => {
-  console.error('Erro ao carregar o arquivo json:', error);
-});
-
-
-
-
-
-
+  .catch((erro) => {
+    console.error("Erro ao carregar o arquivo json:", erro);
+  });

@@ -1,43 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Sarala:wght@700&display=swap');
+:root {
+    --cor-principal:#a7727D;
+    --cor-secundaria:#F9F5E7;
+    
+    --cor-extra:#eddbc7bd;
+
+    --font-primaria:'Sarala', sans-serif;
+    --font-secundaria:'Righteous', cursive;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
 body{
-    background: hsl(27, 66%, 92%);
+    background-color:var(--cor-principal);
     padding: 15px;
-    font-family: sans-serif;
+    font-family: var(--font-primaria);
     font-weight: bold;
     display: flex;
     flex-direction: column;
     align-items:center;
 }
 .canvas {
+    width: 700px;
+    height: 700px;
     padding: 20px;
-    width: 650px;
-    height: 400px;
 }
 .container {
     display: flex;
     flex-direction: column;
     align-items:center;
-    margin-top: 10%;
-    background: #FFEBEB;
+    margin-top: 5%;
+    background:var(--cor-extra);
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.459);
     border-radius: 10px;
-    width: 50rem;
-    height: 40rem;
+    width: 70%;
+    height: 35rem;
+    padding:30px;
+}
+.container h1 {
+    font-family: var(--font-secundaria);
 }
 .containerInputs {
     font-size: x-large;
-    
-    
 }
-
 .inputs {
     border: none;
-    background: #1103037a;
+    background: var(--cor-secundaria);
     border-radius: 05px;
     margin-bottom: 20px;
+    margin-top: 30px;
     padding: 10px;
     font-size: medium;
-    color: #DDE6ED;
-    
+    font-weight: bold;
+    color: var(--cor-principal);
+    cursor: pointer;
 }
 .btn {
     padding: 10px;
@@ -45,12 +62,32 @@ body{
     border-radius: 05px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.459);
     font-size: medium;
-    color: #DDE6ED;
-    background: #1103037a;
-    
-   
+    font-weight: bold;
+    color: var(--cor-secundaria);
+    background: var(--cor-principal);
+    cursor: pointer;
 }
 .btn:hover {
-    background: #DDE6ED;
-    color: #1103037a;
+    background: var(--cor-secundaria);
+    color: var(--cor-principal);
+    transition: 1s;
+}
+@media screen and (max-width: 1018px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+        width: 70%;
+        height: 70%;
+    }
+    .canvas {
+        width: 90%;
+        height: 90%;
+    }
+    .containerInputs {
+        display: flex;
+        flex-direction: column;
+        width: 70%;
+        height: 70%;
+    }
 }

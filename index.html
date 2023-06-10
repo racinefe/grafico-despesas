@@ -1,49 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
-
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  <link rel="stylesheet" href="style.css">
-  <script defer src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <title>Frontend Mentor | Expenses chart component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="canvas">
-
-      <canvas id="grafico"></canvas>
-
-    </div>
-    <div class="containerInputs">
-
-      <label for="valor" class="labelValor">Valor:</label>
-      <input type="number" class="inputs" id="valor">
-
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-      <label for="dia">Dia da Semana:</label>
-      <select class="inputs" id="dia">
-        <option value="Segunda-feira">Segunda-feira</option>
-        <option value="Terça-feira">Terça-feira</option>
-        <option value="Quarta-feira">Quarta-feira</option>
-        <option value="Quinta-feira">Quinta-feira</option>
-        <option value="Sexta-feira">Sexta-feira</option>
-        <option value="Sábado">Sábado</option>
-        <option value="Domingo">Domingo</option>
-      </select>
-    </div>
-    <button class="btn" id="atualizar">Atualizar Gráfico</button>
-      
-  </div>
+    <link rel="icon" href="./img/favicon2.png"/>
+    <link rel="stylesheet" href="style.css" />
+
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <title>Gráfico de Despesas</title>
+ 
+  </head>
+  <body>
   
-    
+    <div class="container">
+      <h1>Gráfico de Despesas da Semana</h1>
+      <form class="containerInputs" id="form">
+        
+        <label for="valor" class="labelValor">Valor:</label>
+        <input type="number" class="inputs" id="valor" />
+
+        <label for="dia">Dia da Semana:</label>
+        <select class="inputs" id="dia">
+          <option value="Segunda-feira">Segunda-feira</option>
+          <option value="Terça-feira">Terça-feira</option>
+          <option value="Quarta-feira">Quarta-feira</option>
+          <option value="Quinta-feira">Quinta-feira</option>
+          <option value="Sexta-feira">Sexta-feira</option>
+          <option value="Sábado">Sábado</option>
+          <option value="Domingo">Domingo</option>
+        </select>
+        
+      </form>
+      <button class="btn" id="atualizar">Atualizar Gráfico</button>
+      <div class="canvas"><canvas id="grafico"></canvas></div>
+    </div>
+  
   </body>
 </html>
